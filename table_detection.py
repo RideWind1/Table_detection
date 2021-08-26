@@ -16,7 +16,7 @@ def table_detection(img_path):
     #scale值越大，检测到的直线越多
     scale = 40
     #自适应获取核值
-    #识别横线
+    #识别竖线
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT,(cols // scale,1))
     #腐蚀
     eroded = cv2.erode(binary,kernel,iterations=1)
@@ -24,11 +24,13 @@ def table_detection(img_path):
     dilated_col = cv2.dilate(eroded,kernel,iterations=1)
     cv2.imwrite("horizontal_line.jpg",dilated_col)
 
-    #识别竖线
+    #识别横线
+    #scale值越大，检测到的直线越多
     scale = 30
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, rows // scale))
     eroded = cv2.erode(binary, kernel, iterations=1)
     dilated_row = cv2.dilate(eroded, kernel, iterations=1)
+    cv2.imwrite("dilated_row.jpg",dilated_row)
     
     #将横线和竖线组合起来形成一个表格
     kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
