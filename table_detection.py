@@ -51,9 +51,9 @@ def table_detection(img_path):
         cv2.rectangle(img,(cell[0], cell[1]),(cell[2], cell[3]),(0, 255, 0), 2)
     
     #输出图片
-    cv2.imwrite("table_detection.jpg",img)       
+    cv2.imwrite("table_detection_img/table_detection_INV8.jpg",img)       
    
 
 #图片的输入,为img文件夹中的图片
-img_path = "img/bing (15)_doc_1.jpg" 
+img_path = "img/INV8.jpg" 
 table_detection(img_path)
